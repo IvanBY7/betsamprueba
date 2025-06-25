@@ -106,6 +106,23 @@ document.addEventListener("DOMContentLoaded", function () {
     segundosElem.textContent = String(segundos).padStart(2, '0');
   }, 1000);
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const animation = entry.target.getAttribute('data-animate') || 'animate__fadeIn';
+        entry.target.classList.add('animate__animated', animation);
+        entry.target.style.opacity = 1;
+        observer.unobserve(entry.target); // Elimínalo si quieres repetir
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+
 });
 function prueba(){
     audio.play().catch(err => alert("Audio bloqueado:", err));

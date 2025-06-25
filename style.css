@@ -141,7 +141,7 @@ body {
   justify-content: center;
   background: url('img/Fondos/fondo_2_5.png') no-repeat;
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
+  background-size: 100% 100vh;
   padding: 50px 50px 70px 50px;
 }
 .codigo_vestimenta {
@@ -436,6 +436,45 @@ video {
       
     }
 
+    @media (min-width: 769px){
+      .contenido_principal{
+        max-width: 769px;
+        margin: auto;
+      }
+      .portada{
+        background-size: cover;
+        background-size: 100% 100vh;
+        width: 100%;
+      }
+      .presentacion{
+        background-size: 100% 100vh;
+      }
+      .primera_foto {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        background: url('img/Fondos/fondo_2_5.png') no-repeat;
+        background-repeat: no-repeat;
+        background-size: 100% 100vh;
+        padding: 50px 50px;
+      }
+
+      .seccion_calendario {
+        display: flex;
+        text-align: center;
+        background-color: #ffece0;
+        min-height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background: url('img/Fondos/fondo_calendario.png') no-repeat;
+        background-repeat: no-repeat;
+        background-size: 100% 100vh;
+        padding: 50px 50px 70px 50px;
+      }
+    }
+
 .custom-audio-player button {
       padding: 10px 10px;
     border-radius: 50px;
@@ -461,7 +500,7 @@ video {
 .titulo_roboto{
   font-size: 42px !important;
   font-weight: 400;
-  align-self: end;
+  /* align-self: end; */
 }
 
 .contador {
@@ -584,4 +623,11 @@ video {
   background-image: url('source/icons/TRAJE.svg'); /* ruta a tu SVG local */
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+.animate__animated {
+  opacity: 1 !important;
 }
