@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const animation = entry.target.getAttribute('data-animate') || 'animate__fadeIn';
         entry.target.classList.add('animate__animated', animation);
         entry.target.style.opacity = 1;
-        observer.unobserve(entry.target); // Elimínalo si quieres repetir
+        //observer.unobserve(entry.target); // Elimínalo si quieres repetir
       }
     });
   }, {
