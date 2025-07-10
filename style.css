@@ -94,28 +94,28 @@ body {
   display: flex;
   text-align: center;
   background-color: #ffece0;
-  min-height: 100vh;
+  min-height: 50vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background: url('img/Fondos/fondo_2.png') no-repeat;
-  height: 100vh;
+  height: 50vh;
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
+  background-size: 100vw 50vh;
   padding: 50px 50px;
 }
 .primera_foto {
   display: flex;
   text-align: center;
   background-color: #ffece0;
-  min-height: 100vh;
+  min-height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 100px;
   background: url('img/Fondos/fondo_2_5.png') no-repeat;
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
+  background-size: 100vw 100%;
   padding: 50px 50px;
 }
 .seccion_calendario {
@@ -135,13 +135,13 @@ body {
   display: flex;
   text-align: center;
   background-color: #ffece0;
-  min-height: 50vh;
+  min-height: 70vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url('img/Fondos/fondo_2_5.png') no-repeat;
+  background: url('img/Fondos/fondo_2.png') no-repeat;
   background-repeat: no-repeat;
-  background-size: 100% 100vh;
+  background-size: 100% 70vh;
   padding: 50px 50px 70px 50px;
 }
 .codigo_vestimenta {
@@ -152,10 +152,227 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: url('img/Fondos/fondo_2_5.png') no-repeat;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 50px 50px 50px 50px;
+}
+.confirmacion {
+  display: flex;
+  text-align: center;
+  background-color: #ffece0;
+  min-height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   background: url('img/Fondos/fondo_2.png') no-repeat;
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
+  background-size: 100% 100%;
   padding: 50px 50px 50px 50px;
+  font-family: 'Sermo';
+}
+.coleccion_fotos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: url('img/Fondos/fondo_2.png') no-repeat center center;
+  background-size: 100% 100%;
+  min-height: 80vh;
+  padding: 50px;
+  font-family: 'Sermo';
+}
+
+.tarjeta_fotos {
+  background-color: #ffece0;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 400px;
+}
+
+.tarjeta_fotos strong {
+  font-size: 1.4rem;
+  font-family: 'Sermo';
+  color: #333;
+}
+
+.btn_drive {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background-color: #e4a088;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.btn_drive img {
+  width: 24px;
+  height: 24px;
+}
+.mesa_regalos {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+
+  background: url('img/Fondos/fondo_mesa.jpeg') no-repeat center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  padding: 20px;
+  font-family: 'Sermo';
+
+  width: 100vw;
+  height: 65vh;
+  overflow: hidden;
+}
+
+.mesa_regalos::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* filtro oscuro */
+  z-index: 0;
+}
+
+.mesa_contenido {
+  position: relative;
+  z-index: 1;
+  color: white;
+  height: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mesa_contenido h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.btn_regalo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn_regalo:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn_regalo img {
+  width: 24px;
+  height: 24px;
+}
+.Listado_comentarios {
+  display: flex;
+  text-align: center;
+  background-color: #ffece0;
+  min-height: 140vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: url('img/Fondos/fondo_2_5.png') no-repeat;
+  background-repeat: no-repeat;
+  background-size: 100% 140vh;
+  font-family: 'Sermo';
+  /* padding: 50px 50px 50px 50px; */
+}
+.titulo_lista{
+  width: 85vw;
+}
+.formulario {
+  max-width: 90vw;
+  /* margin: 30px auto; */
+  background: #fffaf5;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.primera_parte,
+.segunda_parte {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #5a3e36;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #f0d9cd;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: #fffdfc;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #e4a088;
+  box-shadow: 0 0 8px rgba(228, 160, 136, 0.4);
+  outline: none;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn-enviar {
+  background-color: #e4a088;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  display: block;
+  margin: 0 auto; /* Centrar el botón */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar:hover {
+  background-color: #d77c67;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-enviar:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
 }
 
 .titulo-audio {
@@ -188,10 +405,15 @@ body {
 }
 
 .carrusel {
+  background: url('img/Fondos/fondo_2_5.png') no-repeat;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-color: #fff;
-  padding: 40px 0;
   text-align: center;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  align-content: center;
 }
 
 .carousel-container {
@@ -204,7 +426,7 @@ body {
 
 .carousel-slide {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 5s ease-in-out;
   gap: 50px;
 }
 
@@ -249,24 +471,19 @@ body {
   font-size: 1em;
 }
 
-.confirmacion {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #ffece0;
-}
-
 .confirmacion button {
-  background-color: #f39c8c;
+  background-color: #e4a088;
+  color: white;
   border: none;
   padding: 15px 30px;
   font-size: 1.2em;
   border-radius: 30px;
-  color: white;
   cursor: pointer;
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.confirmacion button:hover {
+.codigo_vestimenta button:hover {
   transform: scale(1.05);
 }
 
@@ -284,15 +501,22 @@ body {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .swiper-slide img {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
 }
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 400px;
+  width: 100%;
+  min-width: 300px;
+  height: auto;
+  aspect-ratio: 3 / 4; /* mantiene proporción 300x400 */
   perspective: 1000px;
   margin: auto;
 }
@@ -301,7 +525,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
+  transition: transform 3s;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -376,6 +600,9 @@ video {
 .musica{
   display: none
 }
+.imgjuntos{
+  width: 70%;
+}
 
 
     @media (max-width: 768px) {
@@ -447,7 +674,7 @@ video {
         width: 100%;
       }
       .presentacion{
-        background-size: 100% 100vh;
+        background-size: 100% 100%;
       }
       .primera_foto {
         display: flex;
@@ -630,4 +857,84 @@ video {
 }
 .animate__animated {
   opacity: 1 !important;
+}
+
+.lista {
+  width: 80%;
+  max-height: 50vh;
+  margin: 40px auto;
+  background: #fffaf5;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'sermo';
+
+  /* Scroll config */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  
+}
+
+/* Opcional: personaliza la scrollbar en navegadores WebKit (Chrome, Edge, Safari) */
+.lista::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lista::-webkit-scrollbar-thumb {
+  background: #e4a088;
+  border-radius: 10px;
+}
+
+.lista::-webkit-scrollbar-thumb:hover {
+  background: #d77c67;
+}
+
+.listado {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mensaje-item {
+  background: #fef1eb;
+  border-left: 6px solid #e4a088;
+  margin-bottom: 15px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.mensaje-item:hover {
+  transform: scale(1.02);
+}
+
+.mensaje-item strong {
+  color: #5a3e36;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
+.mensaje-item p {
+  margin: 0;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff; /* o cualquier color */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: bold;
 }

@@ -1,3 +1,6 @@
+import { UrlBase, Url } from "./config.js";
+// const UrlBase = "http://192.168.1.217:8000/backend/";
+
 let btn = null
 let status = null
 let audio = null
@@ -6,8 +9,44 @@ let video = null
 let modal = null
 let contenido = null
 let imgAudio = null
+let div_nombre_invitado = null
+let div_personas_permitidas = null
+let btn_confirmar = null;
+let id_familia = null;
+let mensajes = [
+  {id: 1, nombre: "Maribel", mensaje: "Mensaje de prueba"},
+  {id: 2, nombre: "Ivan", mensaje: "Otra prueba de mensaje"},
+  {id: 3, nombre: "Samantha", mensaje: "Probanding"},
+  {id: 4, nombre: "Alberto", mensaje: "ultimo elemento por defecto"},
+]
 
-document.addEventListener("DOMContentLoaded", function () {
+let input_nombre = null;
+let input_mensaje = null;
+
+const familia = {
+  id: null,
+  nombre_familia: "",
+  confirmacion_asistencia: false,
+  particpa_foto: false,
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const loader = document.getElementById('loader');
+  div_nombre_invitado = document.getElementById('nombre_invitado');
+  div_personas_permitidas = document.getElementById('personas_permitidas');
+  btn_confirmar = document.getElementById('btn_confirmar');
+  btn_confirmar.addEventListener('click', confirmarAsistencia)
+
+  await loadFamilia()
+  
+  await loadMensajes()
+  input_nombre = document.getElementById('nombre_invitado')
+  input_mensaje = document.getElementById('mensaje')
+
+  document.getElementById('boton_enviar').addEventListener('click', enviarmensaje)
+  // Fecha límite (por ejemplo: 25 de julio de 2025 a las 15:00)
+  document.getElementById('contenedor_video').addEventListener('click', prueba)
+  
   btn = document.getElementById('btnPlayPause');
   status = document.getElementById('statusAudio');
   audio = document.getElementById('musica_boda');
@@ -16,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     songs: [
       {
         name: "Música de Boda",
-        url: "http://192.168.1.217:443/BETSAM/front/source/music/musica_v2.mp3"
+        url: Url+"source/music/musica_v2.mp3"
       }
     ]
   });
@@ -25,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     spaceBetween: 30,
     loop: true,
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
     },
     navigation: {
@@ -41,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Agrega comportamiento de voltear al hacer clic
   document.querySelectorAll('.flip-card').forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('flipped');
-    });
+    // card.addEventListener('click', () => {
+    //   card.classList.toggle('flipped');
+    // });
   });
   video = document.getElementById("carta-video");
   modal = document.getElementById("carta-modal");
@@ -74,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Fecha límite (por ejemplo: 25 de julio de 2025 a las 15:00)
   const fechaLimite = new Date("2025-09-20T17:30:00").getTime();
 
   const diasElem = document.getElementById("dias");
@@ -123,7 +161,88 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(el);
   });
 
+  loader.style.display = 'none';
+
 });
+function enviarmensaje() {
+  const nombre = input_nombre.value.trim();
+  const mensaje = input_mensaje.value.trim();
+
+  if (!nombre || !mensaje) {
+    alert("Por favor, completa ambos campos.");
+    return;
+  }
+
+  fetch(UrlBase + 'postMensajes.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      nombre: nombre,
+      mensaje: mensaje
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error en la respuesta del servidor');
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.success) {
+      input_nombre.value = '';
+      input_mensaje.value = '';
+      loadMensajes(); // Recargar mensajes
+    } else {
+      console.error('Error del servidor:', data.error);
+      alert('No se pudo enviar el mensaje.');
+    }
+  })
+  .catch(error => {
+    console.error('Error en la petición:', error);
+    alert('Error al intentar enviar el mensaje.');
+  });
+}
+
+
+async function loadMensajes() {
+  await fetch(UrlBase+'getMensajes.php')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        renderizarMensajes(data.data); // Renderiza los mensajes recibidos
+      } else {
+        console.error('Error desde el servidor:', data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error en la petición:', error);
+    });
+}
+
+
+function renderizarMensajes(mensajes) {
+  const lista = document.getElementById('enlistado');
+  lista.innerHTML = ''; // Limpiar contenido previo
+
+  mensajes.forEach(msg => {
+    const li = document.createElement('li');
+    li.classList.add('mensaje-item');
+
+    li.innerHTML = `
+      <strong>${msg.nombre}</strong>
+      <p>${msg.mensaje}</p>
+    `;
+
+    lista.appendChild(li);
+  });
+}
 function prueba(){
     audio.play().catch(err => alert("Audio bloqueado:", err));
     video.play();
@@ -136,9 +255,92 @@ function prueba(){
       }, 400);
     }, 1400)
   }
+async function loadFamilia() {
+  const params = new URLSearchParams(window.location.search);
+  const familiaBase64 = params.get('familia');
+  if(!familiaBase64) {
+    btn_confirmar.textContent = "¡No se reconoce ninguna familia!"
+    btn_confirmar.disabled = true;
+    return
+  }
+  const familiaDecodificada = atob(familiaBase64);
+  const familia = familiaDecodificada;
+  id_familia = familia
+  console.log(familia)
 
+  try {
+    const response = await fetch(UrlBase + 'getFamilia.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        id_familia: familia
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Error en la respuesta del servidor');
+    }
+
+    const data = await response.json();
+
+    if (data.success) {
+      console.log(data)
+      render_info_familia(data.data)
+      //renderizarMensajes(data.
+      // data); // o cualquier función que maneje la info
+    } else {
+      console.error('Error desde el servidor:', data.error);
+    }
+  } catch (error) {
+    console.error('Error en la petición:', error);
+  }
+}
+function render_info_familia(familia){
+  var mensaje_personas = familia.personas_permitidas + " Personas permitidas"
+  if(familia.personas_permitidas == "1") mensaje_personas = familia.personas_permitidas + " Persona permitida"
+  div_nombre_invitado.textContent = familia.nombre_familia
+  div_personas_permitidas.textContent = mensaje_personas
+  if(familia.confirmacion_asistencia){
+    btn_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!"
+    btn_confirmar.disabled = true;
+  } 
+  else {
+    btn_confirmar.textContent = "Confirmar Asistencias"
+    btn_confirmar.disabled = false;
+  }
+}
 
 // Confirmación
-function confirmarAsistencia() {
-  alert("¡Gracias por confirmar tu asistencia! ❤️");
+async function confirmarAsistencia() {
+  const familia = {
+      id_familia:id_familia
+    };
+
+    try {
+      const response = await fetch(UrlBase + 'ConfirmarAsistencia.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(familia)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("¡Gracias por confirmar tu asistencia! ❤️");
+        btn_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!"
+        btn_confirmar.disabled = true;
+        //document.getElementById('listado-tab').click(); // volver al tab de listado
+      } else {
+        console.log(result)
+        alert('No se pudo confirmar tu asistencia, por favor comunicate conmigo por WhatsApp');
+      }
+
+    } catch (error) {
+      console.log('Error en la solicitud: ' + error.message);
+    }
+  
 }
