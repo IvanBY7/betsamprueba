@@ -1,4 +1,4 @@
-import { UrlBase, Url } from "./js/config.js";
+import { UrlBase, Url } from "./config.js";
 // const UrlBase = "http://192.168.1.217:8000/backend/";
 
 let btn = null
@@ -32,8 +32,10 @@ const familia = {
 
 document.addEventListener("DOMContentLoaded", async function () {
   const loader = document.getElementById('loader');
-  div_nombre_invitado = document.getElementById('nombre_invitado');
+  div_nombre_invitado = document.getElementById('nombre_invitado_confirmacion');
   div_personas_permitidas = document.getElementById('personas_permitidas');
+    btn_confirmar = document.getElementById('btn_confirmar');
+  btn_confirmar.addEventListener('click', confirmarAsistencia)
 
   await loadFamilia()
   
@@ -158,9 +160,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
   });
-
-  btn_confirmar = document.getElementById('btn_confirmar');
-  btn_confirmar.addEventListener('click', confirmarAsistencia)
 
   loader.style.display = 'none';
 

@@ -254,7 +254,7 @@
     </ul>
   </section>
   <section class="confirmacion">
-    <strong class="titulo_roboto" id="nombre_invitado"></strong>
+    <strong class="titulo_roboto" id="nombre_invitado_confirmacion"></strong>
     <div class="titulo_sermo" id="personas_permitidas"></div>
     <button id="btn_confirmar">Confirmar Asistencia</button>
   </section>
