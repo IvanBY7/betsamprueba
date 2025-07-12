@@ -1,4 +1,4 @@
-export const UrlBase = "http://192.168.101.109:8000/backend/";
-export const UrlBasefront = "http://192.168.101.109:8000/?familia=";
-export const Url = "http://192.168.101.109:8000/?familia=";
+export const UrlBase = "https://bodasambeto.cmdeploystudio.com/betsamprueba/backend/";
+export const UrlBasefront = "https://bodasambeto.cmdeploystudio.com/betsamprueba/?familia=";
+export const Url = "https://bodasambeto.cmdeploystudio.com/betsamprueba/?familia=";
 export const SecretKey = "LlaveSecreta";

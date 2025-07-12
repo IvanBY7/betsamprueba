@@ -1,17 +1,22 @@
 <?php
+// Cabeceras para permitir CORS (opcional, solo si accedes por navegador)
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
-$host = 'localhost';       // o IP del servidor
-$db   = 'bambi';           // nombre de tu base de datos
-$user = 'bambi';           // tu usuario de PostgreSQL
-$pass = 'bambi';           // la contraseña del usuario
-$port = '5432';            // puerto por defecto de PostgreSQL
+// Datos de conexión (ajusta si es necesario)
+$host = 'localhost';
+$dbname = 'ambeto_db';
+$user = 'bambi';
+$password = '1234';
 
 try {
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
-    // Configurar para lanzar excepciones en errores
+    // Intentar la conexión
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "✅ Conexión exitosa a PostgreSQL";
+    //echo "¡Conexión exitosa a la base de datos '$dbname'!";
 } catch (PDOException $e) {
     echo "❌ Error de conexión: " . $e->getMessage();
 }
 ?>
+
