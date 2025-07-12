@@ -105,6 +105,7 @@
             <th>Teléfono</th>
             <th>Link</th>
             <th>Mensaje</th>
+            <th>eliminar</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -153,7 +154,7 @@
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
 
 <script type="module">
-  import { UrlBase, UrlBasefront } from "./config";
+  import { UrlBase, UrlBasefront } from "./js/config.js";
   //const UrlBase = "http://192.168.1.217:8000/backend/";
   //const UrlBasefront = "http://192.168.1.217:8000/?familia=";
   let invitados = [];
@@ -286,10 +287,31 @@ Cualquier duda, no dudes en escribirnos. ¡Esperamos verte pronto! 🤗`;
         <td>${invitado.numero_telefonico}</td>
         <td>${UrlBasefront}${id}</td>
         <td><a href="${url}" target="_blank" class="btn btn-success btn-sm">Enviar por WhatsApp</a></td>
+        <td><button class="btn btn-primary btn-sm" onclick="enviarPeticion(${invitado.id})">Eliminar registro</button></td>
       `;
       tbody.appendChild(row);
     });
   }
+
+  window.enviarPeticion = function(id) {
+    fetch(UrlBase + 'delete_Familia.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: id })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Respuesta del servidor:', data);
+      alert(data.message);
+      loadInvitados(); // <-- para que refresque la tabla si quieres
+    })
+    .catch(error => {
+      console.error('Error al enviar la petición:', error);
+      alert('Error al enviar la petición');
+    });
+  };
 </script>
 </body>
 </html>

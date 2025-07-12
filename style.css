@@ -938,3 +938,8 @@ video {
   font-size: 1.5em;
   font-weight: bold;
 }
+
+.img_qr{
+  width: 50%;
+  height: 50%;
+}

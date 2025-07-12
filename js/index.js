@@ -1,4 +1,4 @@
-import { UrlBase, Url } from "./config.js";
+import { UrlBase, Url } from "./js/config.js";
 // const UrlBase = "http://192.168.1.217:8000/backend/";
 
 let btn = null

@@ -270,6 +270,7 @@
   <section class="coleccion_fotos">
     <div class="tarjeta_fotos">
       <strong>¡Comparte tus recuerdos con nosotros!</strong>
+      <img class="img_qr" src="img/QR_foto.png" alt="Subir fotos al Drive" />
       <a href="https://drive.google.com/drive/folders/1MChmynaZeZTfB4Bl0yH1_27-2nIO2HEm" class="btn_drive" target="_blank">
         <img src="source/icons/icono_subir.png" alt="Subir fotos al Drive" />
         Subir fotos
