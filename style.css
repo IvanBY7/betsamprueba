@@ -161,7 +161,7 @@ body {
   display: flex;
   text-align: center;
   background-color: #ffece0;
-  min-height: 80vh;
+  min-height: 50vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -227,7 +227,7 @@ body {
   text-align: center;
 
   background: url('img/Fondos/fondo_mesa.jpeg') no-repeat center center;
-  background-size: 100% 100%;
+  background-size: auto 100%;
   background-repeat: no-repeat;
 
   padding: 20px;
@@ -405,7 +405,7 @@ textarea {
 }
 
 .carrusel {
-  background: url('img/Fondos/fondo_2_5.png') no-repeat;
+  background: url('img/Fondos/fondo_carrusel.png') no-repeat;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-color: #fff;
@@ -420,7 +420,7 @@ textarea {
   position: relative;
   width: 600px;
   margin: auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
 }
 
@@ -434,7 +434,6 @@ textarea {
   flex-shrink: 0;
   width: 200px;
   height: 350px;
-  border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   scroll-snap-align: center;
@@ -515,7 +514,7 @@ textarea {
   background-color: transparent;
   width: 100%;
   min-width: 300px;
-  height: auto;
+  height: 69.5vh;
   aspect-ratio: 3 / 4; /* mantiene proporción 300x400 */
   perspective: 1000px;
   margin: auto;
@@ -539,7 +538,6 @@ textarea {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   backface-visibility: hidden;
   overflow: hidden;

@@ -65,7 +65,7 @@
 
   <section class="primera_foto">
     <div>
-      <h2 class="titulo_roboto animate-on-scroll animate__slower" data-animate="animate__bounceInRight">¡NOS CASAMOS!</h2>
+      <h2 class="titulo_roboto animate__bounceInRight animate__slower" data-animate="">¡NOS CASAMOS!</h2>
       <h2 class="descripcion_roboto">Nos encantaría que seas parte de este momento tan especial para nosotros</h2>
     </div>
   </section>
@@ -114,7 +114,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_1.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_1.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -126,7 +126,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_2.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_2.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -138,7 +138,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_3.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_3.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -150,7 +150,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_4.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_4.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -162,7 +162,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_5.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_5.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -174,7 +174,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_6.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_6.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -186,7 +186,7 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_7.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_7.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -198,7 +198,20 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_8.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_8.jpeg" alt="Foto 1" class="img-fluid shadow" />
+                </div>
+                <div class="flip-card-back">
+                  <p>Nuestra primera cita ❤️</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 
+          <div class="swiper-slide">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="img/foto_9.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
@@ -210,26 +223,14 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img src="img/foto_9.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
+                  <img src="img/foto_10.jpeg" alt="Foto 1" class="img-fluid shadow" />
                 </div>
                 <div class="flip-card-back">
                   <p>Nuestra primera cita ❤️</p>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="img/foto_10.jpeg" alt="Foto 1" class="img-fluid rounded-4 shadow" />
-                </div>
-                <div class="flip-card-back">
-                  <p>Nuestra primera cita ❤️</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> -->
       </div>
   </section>
   <!-- Evento Civil -->
@@ -254,9 +255,11 @@
     </ul>
   </section>
   <section class="confirmacion">
-    <strong class="titulo_roboto" id="nombre_invitado_confirmacion"></strong>
-    <div class="titulo_sermo" id="personas_permitidas"></div>
-    <button id="btn_confirmar">Confirmar Asistencia</button>
+    <div class="tarjeta_fotos">
+      <strong class="titulo_roboto" id="nombre_invitado_confirmacion"></strong>
+      <strong class="titulo_sermo" id="personas_permitidas"></strong>
+      <button id="btn_confirmar"><strong>Confirmar Asistencia</strong></button>
+    </div>
   </section>
   <section class="mesa_regalos">
     <div class="mesa_contenido">
