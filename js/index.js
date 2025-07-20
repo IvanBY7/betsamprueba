@@ -322,37 +322,35 @@ function render_info_familia(familia){
 
 // Confirmación
 async function confirmarAsistencia() {
+  const mensaje = "¡Hola! Quiero confirmar mi asistencia a la boda. 💍✨";
+  alert("¡Gracias por confirmar tu asistencia! ❤️\nNo olvides regresar para ver el resto de la invitación.");
+  enviarMensajeWhatsApp(mensaje); // abrir de inmediato
+
   const familia = {
-      id_familia:id_familia
-    };
+    id_familia: id_familia
+  };
 
-    try {
-      const response = await fetch(UrlBase + 'ConfirmarAsistencia.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(familia)
-      });
+  try {
+    const response = await fetch(UrlBase + 'ConfirmarAsistencia.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(familia)
+    });
 
-      const result = await response.json();
+    const result = await response.json();
 
-      if (result.success) {
-        alert("¡Gracias por confirmar tu asistencia! ❤️ \n Se te dirigirá a WhatsApp \n ¡No olvides regresar para ver el resto de la invitación!");
-        btn_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!"
-        btn_confirmar.disabled = true;
-        btn_declinar.style.display = 'none'
-        enviarMensajeWhatsApp("¡Hola! Quiero confirmar mi asistencia a la boda. 💍✨")
-        //document.getElementById('listado-tab').click(); // volver al tab de listado
-      } else {
-        console.log(result)
-        alert('No se pudo confirmar tu asistencia, por favor comunicate conmigo por WhatsApp');
-      }
-
-    } catch (error) {
-      console.log('Error en la solicitud: ' + error.message);
+    if (result.success) {
+      btn_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!";
+      btn_confirmar.disabled = true;
+      btn_declinar.style.display = 'none';
+    } else {
+      alert('No se pudo confirmar tu asistencia, por favor comunícate conmigo por WhatsApp.');
     }
-  
+  } catch (error) {
+    console.log('Error en la solicitud: ' + error.message);
+  }
 }
 
 function declinarAsistencia(){
