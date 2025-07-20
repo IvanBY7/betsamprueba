@@ -12,6 +12,7 @@ let imgAudio = null
 let div_nombre_invitado = null
 let div_personas_permitidas = null
 let btn_confirmar = null;
+let btn_declinar = null;
 let id_familia = null;
 let mensajes = [
   {id: 1, nombre: "Maribel", mensaje: "Mensaje de prueba"},
@@ -35,7 +36,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   div_nombre_invitado = document.getElementById('nombre_invitado_confirmacion');
   div_personas_permitidas = document.getElementById('personas_permitidas');
     btn_confirmar = document.getElementById('btn_confirmar');
+    btn_declinar = document.getElementById('btn_declinar');
   btn_confirmar.addEventListener('click', confirmarAsistencia)
+  btn_declinar.addEventListener('click', declinarAsistencia)
 
   await loadFamilia()
   
@@ -298,16 +301,21 @@ async function loadFamilia() {
   }
 }
 function render_info_familia(familia){
+  const strong_confirmar = document.getElementById('strong_confirmar')
+  const strong_declinar = document.getElementById('strong_declinar')
   var mensaje_personas = familia.personas_permitidas + " Personas permitidas"
   if(familia.personas_permitidas == "1") mensaje_personas = familia.personas_permitidas + " Persona permitida"
   div_nombre_invitado.textContent = familia.nombre_familia
   div_personas_permitidas.textContent = mensaje_personas
+  strong_declinar.textContent = "Lo siento, no podré asistir 😔"
   if(familia.confirmacion_asistencia){
-    btn_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!"
+    strong_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!"
     btn_confirmar.disabled = true;
+    btn_declinar.style.display = 'none'
   } 
   else {
-    btn_confirmar.textContent = "Confirmar Asistencias"
+    strong_confirmar.textContent = "¡Con gusto asistiré en este momento tan especial! ❤️"
+    btn_declinar.style.display = 'block'
     btn_confirmar.disabled = false;
   }
 }
@@ -330,9 +338,11 @@ async function confirmarAsistencia() {
       const result = await response.json();
 
       if (result.success) {
-        alert("¡Gracias por confirmar tu asistencia! ❤️");
+        alert("¡Gracias por confirmar tu asistencia! ❤️ \n Se te dirigirá a WhatsApp \n ¡No olvides regresar para ver el resto de la invitación!");
         btn_confirmar.textContent = "¡Gracias por haber confirmado tu asistencia!"
         btn_confirmar.disabled = true;
+        btn_declinar.style.display = 'none'
+        enviarMensajeWhatsApp("¡Hola! Quiero confirmar mi asistencia a la boda. 💍✨")
         //document.getElementById('listado-tab').click(); // volver al tab de listado
       } else {
         console.log(result)
@@ -343,4 +353,18 @@ async function confirmarAsistencia() {
       console.log('Error en la solicitud: ' + error.message);
     }
   
+}
+
+function declinarAsistencia(){
+  enviarMensajeWhatsApp(`¡Hola! Muchas gracias por la invitación, me siento muy honrad@ de ser considerado@ para un momento tan especial 💍✨.
+
+Lamentablemente no podré asistir, pero les deseo lo mejor en esta nueva etapa llena de amor y felicidad ❤️.
+
+¡Que disfruten muchísimo su día y que sea inolvidable! 🎉`)
+}
+
+function enviarMensajeWhatsApp(mensaje) {
+  const numero = '529991412116'; // Reemplaza con el número real, sin "+" ni espacios
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
 }

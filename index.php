@@ -258,7 +258,8 @@
     <div class="tarjeta_fotos">
       <strong class="titulo_roboto" id="nombre_invitado_confirmacion"></strong>
       <strong class="titulo_sermo" id="personas_permitidas"></strong>
-      <button id="btn_confirmar"><strong>Confirmar Asistencia</strong></button>
+      <button id="btn_confirmar"><strong id="strong_confirmar">¡Con gusto asistiré en este momento tan especial! ❤️</strong></button>
+      <button id="btn_declinar"><strong id="strong_declinar">Lo siento, no podré asistir 😔</strong></button>
     </div>
   </section>
   <section class="mesa_regalos">

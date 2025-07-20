@@ -172,7 +172,7 @@
       columnDefs: [
         { targets: 6, width: '250px' }, // columna de link
       ],
-      dom: 'Bfrtip',
+      dom: 'Blfrtip',
       buttons: [
         {
           extend: 'excelHtml5',
@@ -189,6 +189,7 @@
           pageSize: 'A4'
         }
       ],
+      lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "Todos"] ],
       language: {
         url: 'source/recursos/es-ES.json'
       }
@@ -266,17 +267,37 @@
       const id = btoa(invitado.id)
       console.log(id)
       const numero = invitado.numero_telefonico; // México + número
-      const mensaje = `💌 ¡Hola ${invitado.nombre_familia}!
+      var mensaje = ""
+      if(invitado.participa_foto){
+        mensaje = `¡Hola ${invitado.nombre_familia}!
 
 Con mucho cariño queremos invitarte a compartir con nosotros un día muy especial 💍✨.
 
-Nos casamos y sería un honor contar con tu presencia en nuestra boda 💒❤️.
+Nos casamos y sería un honor contar con tu presencia en nuestra boda.
 
 Aquí te compartimos el enlace con todos los detalles de la invitación 📲:
 ${UrlBasefront}${id}
 
+🚨Esperamos tu confirmación a más tardar el día *10 de Agosto*.
+
+Eres parte de nuestro círculo más querido, por eso queremos incluirte a un momento íntimo con nosotros, *te esperamos a las 4:30 en el lugar de la ceremonia* ponte guap@ que se plasmarán momentos eternos, por favor se puntual ✅.
+
 Cualquier duda, no dudes en escribirnos. ¡Esperamos verte pronto! 🤗`;
-      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      }else{
+        mensaje = `¡Hola ${invitado.nombre_familia}!
+
+Con mucho cariño queremos invitarte a compartir con nosotros un día muy especial 💍✨.
+
+Nos casamos y sería un honor contar con tu presencia en nuestra boda.
+
+Aquí te compartimos el enlace con todos los detalles de la invitación 📲:
+${UrlBasefront}${id}
+
+🚨Esperamos tu confirmación a más tardar el día *10 de Agosto*.
+
+Cualquier duda, no dudes en escribirnos. ¡Esperamos verte pronto! 🤗`;
+      }
+      const url = `https://wa.me/52${numero}?text=${encodeURIComponent(mensaje)}`;
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${invitado.id}</td>
